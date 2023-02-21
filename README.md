@@ -12,21 +12,21 @@ echo "" > logproc.log
 
 lowpriority() {
 
-    echo "[`date`] Start low priority" > logproc.log
+    echo "[`date`] Старт команды с низким приоритетом" > logproc.log
 
     nice -15 tar czvf /tmp/archive_low.tar.gz /boot/* > /dev/null  2>&1
 
-    echo "[`date`] End low priority" >> logproc.log
+    echo "[`date`] Окончание выполнения команды с низким приоритетом" >> logproc.log
 
 }
 
 hipriority() {
 
-    echo "[`date`] Start high priority" >> logproc.log
+    echo "[`date`] Старт команды с высоким приоритетом" >> logproc.log
 
     nice --19 tar czvf /tmp/archive_high.tar.gz /boot/* > /dev/null  2>&1
 
-    echo "[`date`] End high priority" >> logproc.log
+    echo "[`date`] Окончание выполнения команды с высоким приоритетом" >> logproc.log
 
 }
 
@@ -39,9 +39,9 @@ cat logproc.log
 Результат вывода лог файла
 
 ```
-[Вт 21 фев 2023 20:17:33 MSK] Start low priority
-[Вт 21 фев 2023 20:17:33 MSK] Start high priority
-[Вт 21 фев 2023 20:17:41 MSK] End high priority
-[Вт 21 фев 2023 20:17:43 MSK] End low priority
+[Вт 21 фев 2023 20:17:33 MSK] Старт команды с низким приоритетом
+[Вт 21 фев 2023 20:17:33 MSK] Старт команды с высоким приоритетом
+[Вт 21 фев 2023 20:17:41 MSK] Окончание выполнения команды с высоким приоритетом
+[Вт 21 фев 2023 20:17:43 MSK] Окончание выполнения команды с низким приоритетом
 ```
-По выводу в лог-файл видно что команда имеющая более высокий приоритет выполняется быстрее
+По выводу в лог-файл видно, что команда имеющая более высокий приоритет выполняется быстрее.
